@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Admin.MVC.ViewModels.AppSettingViewModel>
+@using Admin.MVC.Services;
+@inject CommonLocalizationService localizer;
+
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+
+@{
+    ViewData["Title"] = "Index";
+    ViewData["BackPageName"] = "Contact Us Setting";
+    ViewData["BackPageUrl"] = "";
+
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h5>@localizer.Get("Contact Us Setting")</h5>
+
+            </div>
+            <div class="ibox-content">
+                <input type="text" class="form-control form-control-sm m-b-xs" id="filter"
+                       placeholder="@localizer.Get("Search")">
+                <table class="footable table table-stripped" data-page-size="8" data-filter=#filter>
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Key)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Value)
+                            </th>
+
+                            @*<th>
+                                @Html.DisplayNameFor(model => model.ValueAr)
+                            </th>*@
+
+                            <th>@localizer.Get("Actions")</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Key)
+                                </td>
+
+                                <td>
+                                    @Html.Raw(item.Value)
+                                </td>
+
+                                @*<td>
+                                        @Html.DisplayFor(modelItem => item.ValueAr)
+                                    </td>*@
+
+                                <td>
+                                    <a href="@Url.Action("Edit", "Setting", new { key = item.Key })" class="btn  btn-white btn-sm" title="@localizer.Get("Edit")">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5">
+                                <ul class="pagination float-right"></ul>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.footable').footable();
+    });
+
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,114 @@
+﻿@using  Microsoft.AspNetCore.Http
+@using Admin.MVC.Services;
+@inject CommonLocalizationService localizer;
+@inject IHttpContextAccessor httpContextAccessor
+
+
+@inject IOptions<RequestLocalizationOptions> LocOptions
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+
+@{
+    string name =
+      httpContextAccessor.HttpContext.User.FindFirst("UserFullName")?.Value;
+
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.Name })
+        .ToList();
+
+    string querystring = !string.IsNullOrWhiteSpace(Context.Request.QueryString.Value) ? Context.Request.QueryString.Value : "";
+    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+    var area = Context.Request.Path;
+    returnUrl = returnUrl + querystring;
+
+}
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+
+        <ul class="nav metismenu" id="side-menu">
+
+            <li class="nav-header text-center">
+                <div class="dropdown profile-element">
+
+                    <img alt="image" class="rounded-circle w-25" src="~/img/user-avatar.jpg" />
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+
+
+                        <span class="block m-t-xs font-bold  ">@name <b class="caret"></b> </span>
+
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                        @*<li><a class="dropdown-item" href="/Profile/ChangePassword">@localizer.Get("Change Password")</a></li>
+                    <li class="dropdown-divider"></li>*@
+                        <li><a class="dropdown-item" href="/Account/Logout">@localizer.Get("Logout")</a></li>
+                    </ul>
+                </div>
+                <div class="logo-element" style="font-size:13px">
+                    App
+                </div>
+            </li>
+
+            @*<li>
+                <a href="#"><i class="fa fa-user"></i> <span class="nav-label">@localizer.Get("Administration")</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a asp-controller="User" asp-action="Index">@localizer.Get("Manage Users")</a></li>
+                    <li><a asp-controller="Category" asp-action="Index">@localizer.Get("Manage Categories")</a></li>
+                    <li><a asp-controller="Brand" asp-action="Index">@localizer.Get("Manage Brands")</a></li>
+                    <li><a asp-controller="City" asp-action="Index">@localizer.Get("Manage Cities")</a></li>
+                    <li><a asp-controller="Area" asp-action="Index">@localizer.Get("Manage Areas")</a></li>
+                    <li><a asp-controller="Discount" asp-action="Index">@localizer.Get("Manage Discounts") </a></li>
+                </ul>
+            </li>*@
+
+            <li data-toggle="tooltip" data-placement="right" title="Products">
+                <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">@localizer.Get("Products")</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="/Product/Index">@localizer.Get("Manage Products")</a></li>
+                </ul>
+            </li>
+            <li data-toggle="tooltip" data-placement="right" title="Products">
+                <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">@localizer.Get("Orders")</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="/Order">@localizer.Get("Manage Orders")</a></li>
+                </ul>
+            </li>
+
+            @*<li>
+                <a href="/Setting/Index"><i class="fa fa-cog"></i> <span class="nav-label">@localizer.Get("Website Setting")</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="/Slider/Index">@localizer.Get("Slider Setting")</a></li>
+                    <li><a href="/Setting/Index">@localizer.Get("Contact Us Setting")</a></li>
+                    <li><a href="/Setting/AboutUs">@localizer.Get("About Us")</a></li>
+                    <li><a href="/Setting/Terms">@localizer.Get("Terms & Conditions")</a></li>
+                    <li><a href="/Setting/Privacy">@localizer.Get("Privacy Policies")</a></li>
+                </ul>
+            </li>*@
+
+            <li>
+                <a href="#"><i class="fa fa-globe"></i> <span class="nav-label">@localizer.Get("Language")</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+
+                    <li>
+                        <a href="@Url.Action("SetLanguage", "Home", new { culture = cultureItems[0].Value, returnUrl = returnUrl })">
+                            @if (requestCulture.RequestCulture.UICulture.Name != "ar")
+                            {<i class="fa fa-check l-2"></i>}  English
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="@Url.Action("SetLanguage", "Home", new { culture = cultureItems[1].Value, returnUrl = returnUrl })">
+                            @if (requestCulture.RequestCulture.UICulture.Name == "ar")
+                            {<i class="fa fa-check l-2"></i>}العربيه
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+        </ul>
+        <input type="hidden" value="@requestCulture.RequestCulture.UICulture.Name" id="language" />
+    </div>
+</nav>

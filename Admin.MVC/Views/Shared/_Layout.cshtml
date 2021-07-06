@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["BackPageName"] - @ViewData["Title"] - App</title>
+
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/font-awesome/css/all.min.css" rel="stylesheet">
+    <link href="~/css/plugins/footable/footable.core.css" rel="stylesheet">
+    <link href="~/css/plugins/steps/jquery.steps.css" rel="stylesheet" />
+    <link href="~/css/animate.css" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet">
+    <link href="~/css/errorStyle.css" rel="stylesheet">
+
+    @using Admin.MVC.Services;
+    @inject CommonLocalizationService localizer;
+    @using Microsoft.AspNetCore.Localization
+    @{
+
+        var requestCultureFeature = Context.Features.Get<IRequestCultureFeature>();
+        var requestCulture = requestCultureFeature.RequestCulture;
+    }
+
+    @if (requestCulture.UICulture.Name == "ar")
+    {
+        <link rel="stylesheet" href="~/css/adminRTL.css">
+    }
+</head>
+<body>
+    <div id="wrapper">
+        @using  Microsoft.AspNetCore.Http
+
+        @inject IHttpContextAccessor httpContextAccessor
+        @{
+            string name =
+              httpContextAccessor?.HttpContext?.User?.FindFirst("UserFullName")?.Value;
+            //httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+        }
+        
+        @{await Html.RenderPartialAsync("_NavigationPartial");}
+        <div id="page-wrapper" class="gray-bg">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li>
+
+                            <span class="m-r-sm text-muted welcome-message">
+                                @localizer.Get("Welcome")
+                                @name
+                            </span>
+
+                        </li>
+
+                        <li>
+                            <a href="/Account/Logout">
+                                <i class="fa fa-sign-out"></i> @localizer.Get("Logout")
+                            </a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-sm-4">
+                    <h2>@ViewData["Title"]</h2>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/@ViewData["BackPageUrl"]">@ViewData["BackPageName"]</a>
+                        </li>
+                        <li class="breadcrumb-item active">
+                            <strong>@ViewData["Title"]</strong>
+                        </li>
+                    </ol>
+                </div>
+
+            </div>
+           
+            <div class="wrapper wrapper-content">
+                <div class="animated fadeInUp">
+                    @RenderBody()
+                    @await Html.PartialAsync("_StatusMessages")
+                    <div id="alertMessage">
+
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+
+                <div>
+                    <strong>Copyright</strong> Smart Business Technology Company &copy; @DateTime.Now.Year
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="~/js/jquery-3.1.1.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.js"></script>
+
+    <script src="~/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="~/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <script src="~/js/plugins/footable/footable.all.min.js"></script>
+    <!-- Custom and plugin javascript -->
+    <script src="~/js/inspinia.js"></script>
+    <script src="~/js/plugins/steps/jquery.steps.min.js"></script>
+    <script src="~/js/Site.js"></script>
+    <script>
+
+        $(".minus-execlude").keypress(function (e) {
+            if (!((e.keyCode > 95 && e.keyCode < 106)
+                || (e.keyCode > 47 && e.keyCode < 58)
+                || e.keyCode == 8)) {
+                return false;
+            }
+        });
+    </script>
+    @RenderSection("Scripts", required: false)
+
+    <div id="preloader-active">
+        <div class="spiner-example">
+            <div class="sk-spinner sk-spinner-rotating-plane"></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,152 @@
+﻿@model IEnumerable<Admin.MVC.ViewModels.OrderViewModel>
+@using Admin.MVC.Services;
+@inject CommonLocalizationService localizer;
+@using Microsoft.AspNetCore.Localization
+
+@{
+    
+
+    ViewData["Title"] = localizer.Get("Orders List");
+    ViewData["BackPageName"] = localizer.Get("Home");
+    ViewData["BackPageUrl"] = "";
+
+    var requestCultureFeature = Context.Features.Get<IRequestCultureFeature>();
+    var requestCulture = requestCultureFeature.RequestCulture;
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox ">
+
+            <div class="ibox-title row">
+                <h5 style='display:inline;' class="col-sm-3  pl-4">@localizer.Get("Orders Report")</h5>
+                <input type="text" class="form-control form-control-sm m-b-xs col-md-6" id="filter"
+                       placeholder="@localizer.Get("Search")">
+                <div class="ibox-tools">
+                    <a asp-action="Create" class="btn btn-primary btn-sm mr-4 ">@localizer.Get("Create New")</a>
+                </div>
+            </div>
+
+            <div class="ibox-content">
+                <table class="footable table table-stripped" data-page-size="8" data-filter=#filter>
+                    <thead>
+                        <tr>
+                            <th>
+                                @localizer.Get("Order Number")
+                            </th>
+
+                            <th>
+                                @localizer.Get("Date of order")
+                            </th>
+                            <th>
+                                @localizer.Get("Time of order")
+                            </th>
+                            <th>
+                                @localizer.Get("Date of Deliver")
+                            </th>
+
+                            <th>
+                                @localizer.Get("No. of products.")
+                            </th>
+
+                            <th>
+                                @localizer.Get("Client Name")
+                            </th>
+
+                            <th>
+                                @localizer.Get("Order Status")
+                            </th>
+                            <th>
+                                @localizer.Get("Area")
+                            </th>
+                            <th>
+                                @localizer.Get("Total Paid")
+
+                            </th>
+
+                            <th>@localizer.Get("Actions")</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.OrderNumber)
+                                </td>
+
+                                <td>
+                                    @item.CreationDate.ToString("yyyy-MM-dd")
+                                </td>
+                                <td>
+                                    @item.CreationDate.ToString("HH-mm-ss")
+                                </td>
+
+                                <td>
+                                    @item.OrderDate.ToString("yyyy-MM-dd")
+                                </td>
+
+                                <td>
+                                    @item.OrderItems.Sum(x => x.Quantity)
+                                </td>
+
+                                <td>
+                                    @item.UserFullName
+                                </td>
+                                <td>
+                                    @item.OrderStatus.ToString()
+                                </td>
+                                @if (requestCulture.UICulture.Name == "ar")
+                                {
+                                    <td>
+                                        @item.ShippingAddress.AreaNameAr
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        @item.ShippingAddress.AreaName
+                                    </td>
+                                }
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TotalPaid)
+                                </td>
+                                <td>
+                                    @using (Html.BeginForm("DeleteOrder", "Order"))
+                                    {
+
+
+                                        <a href="@Url.Action("Edit", "Order", new { id = item.Id })" class="btn  btn-white btn-sm" title="Edit">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        @Html.AntiForgeryToken()
+                                        @Html.Hidden("id", item.Id)
+                                        <button type="submit" class="btn btn-white btn-sm" onclick="return confirm('Are you sure you to delete this Record?');">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    }
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="11">
+                                <ul class="pagination float-right"></ul>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/jquery-3.1.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.footable').footable();
+    });
+
+</script>

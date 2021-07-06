@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - App</title>
+
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/font-awesome/css/all.min.css" rel="stylesheet">
+    
+    <link href="~/css/animate.css" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet">
+
+</head>
+<body>
+
+
+    <div class="animated fadeInUp">
+        @*@Html.RenderPartial("")*@
+
+        @RenderBody()
+        @await Html.PartialAsync("_StatusMessages")
+    </div>
+    <script src="~/js/jquery-3.1.1.min.js"></script>
+    <script src="~/js/site.js"></script>
+    @RenderSection("Scripts", required: false)
+    <div id="preloader-active">
+        <div class="spiner-example">
+            <div class="sk-spinner sk-spinner-rotating-plane"></div>
+        </div>
+    </div>
+
+</body>
+</html>

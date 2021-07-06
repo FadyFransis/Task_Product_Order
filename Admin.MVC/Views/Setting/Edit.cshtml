@@ -1,0 +1,65 @@
+﻿@model Admin.MVC.ViewModels.AppSettingViewModel
+
+@using Admin.MVC.Services;
+@inject CommonLocalizationService localizer;
+@using Microsoft.AspNetCore.Localization
+@{
+
+    ViewData["Title"] = ViewBag.Title;
+    ViewData["BackPageName"] = ViewBag.PageName;
+    ViewData["BackPageUrl"] = "";
+
+    var requestCultureFeature = Context.Features.Get<IRequestCultureFeature>();
+    var requestCulture = requestCultureFeature.RequestCulture;
+}
+
+<div class="ibox">
+    <div class="ibox-title">
+        <h5>@localizer.Get("Edit")</h5>
+        <div class="ibox-tools">
+            <a class="btn btn-defult " asp-action="Index">@localizer.Get("Back to List")</a>
+        </div>
+    </div>
+    <div class="ibox-content">
+        <div id="accordion">
+            <div class="card">
+                <div class="card-body">
+                    <form asp-action="SaveSetting">
+                        <div class="row">
+                            <input type="hidden" asp-for="Id" />
+                            <input type="hidden" asp-for="Key" />
+                            @if (Model.Key == App.Core.Entities.Base.AppSettingKey.Address)
+                            {
+                                <div class="form-group col-md-6">
+                                    <label asp-for="Value" class="control-label"></label>  <span style="color:red">*</span>
+                                    <input asp-for="Value" class="form-control" />
+                                    <span asp-validation-for="Value" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label asp-for="ValueAr" class="control-label"></label>  <span style="color:red">*</span>
+                                    <input asp-for="ValueAr" class="form-control" />
+                                    <span asp-validation-for="ValueAr" class="text-danger"></span>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-group col-md-12">
+                                    <label asp-for="Value" class="control-label"></label>  <span style="color:red">*</span>
+                                    <input asp-for="Value" class="form-control" />
+                                    <span asp-validation-for="Value" class="text-danger"></span>
+                                </div>
+                            }
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    <input id="form-submit-btn" type="submit" value="@localizer.Get("Save Changes")" class="btn btn-primary" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

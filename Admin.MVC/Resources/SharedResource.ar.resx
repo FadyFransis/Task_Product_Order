@@ -1,0 +1,480 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Account not active" xml:space="preserve">
+    <value>الحساب غير فعال</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>التحكم</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>نشظ</value>
+  </data>
+  <data name="Adding Date" xml:space="preserve">
+    <value>تاريخ الاضافه</value>
+  </data>
+  <data name="Administration" xml:space="preserve">
+    <value>اداره البيانات</value>
+  </data>
+  <data name="Are you sure you to delete this Record?" xml:space="preserve">
+    <value>هل انت متاكد من حذف هذا السجل</value>
+  </data>
+  <data name="Back to List" xml:space="preserve">
+    <value>عوده الى القائمه</value>
+  </data>
+  <data name="Change Password" xml:space="preserve">
+    <value>تغيير كلمه المرور</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>الكود</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>اضافه جديد</value>
+  </data>
+  <data name="Create User" xml:space="preserve">
+    <value>اضافه مستخدم جديد</value>
+  </data>
+  <data name="Edit User" xml:space="preserve">
+    <value>تعديل بيانات مستخدم</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>البريد الإلكتروني</value>
+  </data>
+  <data name="Enter your email address and your password will be reset and emailed to you." xml:space="preserve">
+    <value>أدخل عنوان بريدك الإلكتروني وسيتم إعادة تعيين كلمة المرور الخاصة بك وإرسالها إليك عبر البريد الإلكتروني.</value>
+  </data>
+  <data name="Error in reset password" xml:space="preserve">
+    <value>خطا فى اعاده تعيين كلمه المرور</value>
+  </data>
+  <data name="First Name" xml:space="preserve">
+    <value>الاسم الاول</value>
+  </data>
+  <data name="First name not in format" xml:space="preserve">
+    <value>يجب ان يحتوى الاول على حروف فقط</value>
+  </data>
+  <data name="Forget password" xml:space="preserve">
+    <value>نسيت كلمه المرور</value>
+  </data>
+  <data name="Forget password?" xml:space="preserve">
+    <value>نسيت كلمه المرور</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>الصفحه الرئيسيه</value>
+  </data>
+  <data name="Invalid Code" xml:space="preserve">
+    <value>الكود غير صحيح</value>
+  </data>
+  <data name="Invalid email format" xml:space="preserve">
+    <value>بريد الكترونى غير صحيح</value>
+  </data>
+  <data name="Invalid Email Or Password" xml:space="preserve">
+    <value>خطا فى كلمه المرور او البريد الالكترونى</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>اللغه</value>
+  </data>
+  <data name="Last Name" xml:space="preserve">
+    <value>الاسم الثانى</value>
+  </data>
+  <data name="Last name not in format" xml:space="preserve">
+    <value>يجب ان يحتوى الاول على حروف فقط</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>تسجيل دخول</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>تسجيل الخروج</value>
+  </data>
+  <data name="Manage Users" xml:space="preserve">
+    <value>اداره المستخدمين</value>
+  </data>
+  <data name="New Password" xml:space="preserve">
+    <value>كلمه المرور الجديده</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>كلمه المرور</value>
+  </data>
+  <data name="Password Changed!" xml:space="preserve">
+    <value>تم تغيير كلمه المرور بنجاح</value>
+  </data>
+  <data name="Phone Number" xml:space="preserve">
+    <value>رقم الهاتف</value>
+  </data>
+  <data name="Phone number exists before" xml:space="preserve">
+    <value>رقم الفون موجود من قبل</value>
+  </data>
+  <data name="Required *" xml:space="preserve">
+    <value>هذا الحقل مطلوب</value>
+  </data>
+  <data name="Reset Password" xml:space="preserve">
+    <value>اعاده تعيين كلمه المرور</value>
+  </data>
+  <data name="Reset password code sent to you please check your email" xml:space="preserve">
+    <value>تم ارسال كود تعيين كلمه المرور الى بريدك الالكترونى برجاء التحقق</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>حفظ</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>بحث</value>
+  </data>
+  <data name="Search For Account" xml:space="preserve">
+    <value>البحث عن الحساب</value>
+  </data>
+  <data name="This email exists before" xml:space="preserve">
+    <value> البريد الالكترونى موجود من قبل</value>
+  </data>
+  <data name="This email not exist" xml:space="preserve">
+    <value>البريد الالكترونى غير موجود</value>
+  </data>
+  <data name="User Added !" xml:space="preserve">
+    <value>تم اضافه المستخدم</value>
+  </data>
+  <data name="User Deleted !" xml:space="preserve">
+    <value>تم حذف المستخدم</value>
+  </data>
+  <data name="User modified !" xml:space="preserve">
+    <value>تم تعديل بيانات المستخدم بنجاح</value>
+  </data>
+  <data name="Users List" xml:space="preserve">
+    <value>قائمه المستخدمين</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>مرحباً</value>
+  </data>
+  <data name="Contact Us Setting" xml:space="preserve">
+    <value>إعدادات التواصل معانا</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>المحتوي</value>
+  </data>
+  <data name="Content Arabic" xml:space="preserve">
+    <value>المحتوي بالعربي</value>
+  </data>
+  <data name="About Us" xml:space="preserve">
+    <value>من نحن</value>
+  </data>
+  <data name="Terms" xml:space="preserve">
+    <value>الشروط</value>
+  </data>
+  <data name="AboutUs" xml:space="preserve">
+    <value>من نحن</value>
+  </data>
+  <data name="Privacy Policies" xml:space="preserve">
+    <value>سياسة الخصوصية</value>
+  </data>
+  <data name="Privacy" xml:space="preserve">
+    <value>الخصوصية</value>
+  </data>
+  <data name="Website Setting" xml:space="preserve">
+    <value>إعدادات الموقع</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>تعديل</value>
+  </data>
+  <data name="Save Changes" xml:space="preserve">
+    <value>حفظ التغييرات</value>
+  </data>
+  <data name="Home Page" xml:space="preserve">
+    <value>الصفحة الرئيسية</value>
+  </data>
+  <data name="Terms &amp; Conditions" xml:space="preserve">
+    <value>الشروط والأحكام</value>
+  </data>
+  <data name="Select Parent Category" xml:space="preserve">
+    <value>إختار الفئة الرئيسية</value>
+  </data>
+  <data name="Areas List" xml:space="preserve">
+    <value>قائمه المناطق</value>
+  </data>
+  <data name="Brands List" xml:space="preserve">
+    <value>قائمه العلامات التجاريه</value>
+  </data>
+  <data name="Categories List" xml:space="preserve">
+    <value>قائمه الفئات</value>
+  </data>
+  <data name="Cities List" xml:space="preserve">
+    <value>قائمه المدن</value>
+  </data>
+  <data name="Create Area" xml:space="preserve">
+    <value>اضافه منطقه</value>
+  </data>
+  <data name="Create Brand" xml:space="preserve">
+    <value>اضافه علامه تجاريه</value>
+  </data>
+  <data name="Create Category" xml:space="preserve">
+    <value>اضافه فئه جديده</value>
+  </data>
+  <data name="Create City" xml:space="preserve">
+    <value>اضافه مدينه جديده</value>
+  </data>
+  <data name="Create Product" xml:space="preserve">
+    <value>اضافه منتج جديد</value>
+  </data>
+  <data name="Create Slider" xml:space="preserve">
+    <value>اضافه سلايدر جديد</value>
+  </data>
+  <data name="Edit Area" xml:space="preserve">
+    <value>تعديل بيانات منطقه</value>
+  </data>
+  <data name="Edit Brand" xml:space="preserve">
+    <value>تعديل بيانات علامه تجاريه</value>
+  </data>
+  <data name="Edit Category" xml:space="preserve">
+    <value>تعديل بيانات فئه</value>
+  </data>
+  <data name="Edit City" xml:space="preserve">
+    <value>تعديل بيانات مدينه</value>
+  </data>
+  <data name="Edit Product" xml:space="preserve">
+    <value>تعديل منتج</value>
+  </data>
+  <data name="Edit Slider" xml:space="preserve">
+    <value>تعديل بيانات سلايدر</value>
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value>الرقم</value>
+  </data>
+  <data name="Manage Areas" xml:space="preserve">
+    <value>اداره المناطق</value>
+  </data>
+  <data name="Manage Brands" xml:space="preserve">
+    <value>اداره العلامات التجاريه</value>
+  </data>
+  <data name="Manage Categories" xml:space="preserve">
+    <value>اداره الفئات</value>
+  </data>
+  <data name="Manage Cities" xml:space="preserve">
+    <value>اداره المدن</value>
+  </data>
+  <data name="Manage Products" xml:space="preserve">
+    <value>اداره المنتجات</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>الاسم</value>
+  </data>
+  <data name="Name Arabic" xml:space="preserve">
+    <value>الاسم بالعربيه</value>
+  </data>
+  <data name="Products" xml:space="preserve">
+    <value>المنتجات</value>
+  </data>
+  <data name="Products List" xml:space="preserve">
+    <value>قائمه المنتجات</value>
+  </data>
+  <data name="Required" xml:space="preserve">
+    <value>هذا الحقل مطلوب</value>
+  </data>
+  <data name="City Name" xml:space="preserve">
+    <value>اسم المدينه</value>
+  </data>
+  <data name="City Name Arabic" xml:space="preserve">
+    <value>اسم المدينه بالعربيه</value>
+  </data>
+  <data name="Create New" xml:space="preserve">
+    <value>اضافه جديد</value>
+  </data>
+  <data name="Deleivery Fees" xml:space="preserve">
+    <value>مصاريف التوصيل</value>
+  </data>
+  <data name="Select City" xml:space="preserve">
+    <value>اختر مدينه</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>اضافه</value>
+  </data>
+  <data name="Brand" xml:space="preserve">
+    <value>العلامه التجاريه</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>التصنيف</value>
+  </data>
+  <data name="Category Name" xml:space="preserve">
+    <value>اسم التصنيف</value>
+  </data>
+  <data name="Category Name Arabic" xml:space="preserve">
+    <value>اسم التصنيف بالعربى</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>الوصف</value>
+  </data>
+  <data name="Description Arabic" xml:space="preserve">
+    <value>الوصف بالعربيه</value>
+  </data>
+  <data name="Is Today Deal" xml:space="preserve">
+    <value>عرض اليوم</value>
+  </data>
+  <data name="Items Sold" xml:space="preserve">
+    <value>الاصناف المباعه</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>السعر</value>
+  </data>
+  <data name="Product Images" xml:space="preserve">
+    <value>صور المنتج</value>
+  </data>
+  <data name="Product Main Info" xml:space="preserve">
+    <value>البيانات الاساسيه للمنتج</value>
+  </data>
+  <data name="Product Sizes" xml:space="preserve">
+    <value>احجام المنتج</value>
+  </data>
+  <data name="Save Product" xml:space="preserve">
+    <value>حفظ المنتج</value>
+  </data>
+  <data name="Stock" xml:space="preserve">
+    <value>المخزون</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>القيمه</value>
+  </data>
+  <data name="Create Discount" xml:space="preserve">
+    <value>اضافه خصم جديد</value>
+  </data>
+  <data name="Discount Code List" xml:space="preserve">
+    <value>قائمه كوبونات الخصم</value>
+  </data>
+  <data name="Discount Type" xml:space="preserve">
+    <value>نوع الخصم</value>
+  </data>
+  <data name="Edit Discount" xml:space="preserve">
+    <value>تعديل بيانات كوبون الخصم</value>
+  </data>
+  <data name="Expiration Date" xml:space="preserve">
+    <value>تاريخ الانتهاء</value>
+  </data>
+  <data name="Manage Discounts" xml:space="preserve">
+    <value>اداره كوبونات الخصم</value>
+  </data>
+  <data name="Saved Successfully" xml:space="preserve">
+    <value>تم الحفظ بنجاح</value>
+  </data>
+  <data name="Manage Orders" xml:space="preserve">
+    <value>إدارة الطلبات</value>
+  </data>
+  <data name="Orders" xml:space="preserve">
+    <value>الطلبات</value>
+  </data>
+  <data name="Slider Setting" xml:space="preserve">
+    <value>إعدادات صور الرئيسية</value>
+  </data>
+  <data name="Discount Amount should be less than 100 if you select Percentage as Discount Type" xml:space="preserve">
+    <value>يجب أن يكون مبلغ الخصم أقل من 100 إذا حددت النسبة المئوية كنوع الخصم</value>
+  </data>
+</root>

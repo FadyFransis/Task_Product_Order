@@ -1,0 +1,122 @@
+﻿@model Admin.MVC.ViewModels.SliderViewModel
+@using Admin.MVC.Services;
+@inject CommonLocalizationService localizer;
+@{
+    ViewData["Title"] = localizer.Get("Edit Slider");
+    ViewData["BackPageName"] = localizer.Get("Sliders List");
+    ViewData["BackPageUrl"] = "Slider";
+
+    
+}
+
+<div class="ibox">
+    <div class="ibox-title">
+        <h5>@localizer.Get("Edit")</h5>
+        <div class="ibox-tools">
+            <a class="btn btn-defult " href="/Slider/Index">@localizer.Get("Back to List")</a>
+        </div>
+    </div>
+    <div class="ibox-content">
+
+        <div class="row pr-sm-5 pl-sm-5">
+            <div class="col-md-12">
+                <form asp-action="Edit" id="form-slider">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    @Html.HiddenFor(model => model.ImageUrl)
+                    @Html.HiddenFor(model => model.Id)
+
+                    <div class="row">
+                        <div class="col-sm-7">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <span asp-validation-for="ImageUrl" class="text-danger"></span>
+
+                                    <label asp-for="Name" class="control-label"></label>
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label asp-for="NameAr" class="control-label"></label>
+                                    <input asp-for="NameAr" class="form-control" />
+                                    <span asp-validation-for="NameAr" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label asp-for="Description" class="control-label"></label>
+                                    <textarea asp-for="Description" class="form-control"></textarea>
+
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label asp-for="DescriptionAr" class="control-label"></label>
+                                    <textarea asp-for="DescriptionAr" class="form-control"></textarea>
+                                    <span asp-validation-for="DescriptionAr" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label asp-for="ButtonText" class="control-label"></label>
+                                    <input asp-for="ButtonText" class="form-control" />
+                                    <span asp-validation-for="ButtonText" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label asp-for="ButtonTextAr" class="control-label"></label>
+                                    <input asp-for="ButtonTextAr" class="form-control" />
+                                    <span asp-validation-for="ButtonTextAr" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label asp-for="ButtonUrl" class="control-label"></label>
+                                    <input asp-for="ButtonUrl" class="form-control" />
+                                    <span asp-validation-for="ButtonUrl" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>
+                                        <input asp-for="IsActive" type="checkbox" style="display:inline" />
+                                        @localizer.Get("Is Active")
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <input id="form-submit-btn" value="@localizer.Get("Save")" class="btn btn-primary" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+
+                            <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                <img id="SliderImageUrl" onError="this.src='/img/Upload.png'" style="width:100%;height:355px;object-fit:cover" class="profile-picture-2x" src="/img/Upload.png" alt="" />
+                                <label class="btn-file-upload">
+                                    <input type="file" accept="image/*" id="file-input">
+                                </label>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="~/js/jquery-3.1.1.min.js"></script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<script src="~/Scripts/Pages/Slider.js"></script>

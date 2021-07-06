@@ -1,0 +1,97 @@
+﻿@model Admin.MVC.ViewModels.AppSettingViewModel
+
+@using Admin.MVC.Services;
+@inject CommonLocalizationService localizer;
+@using Microsoft.AspNetCore.Localization
+@{
+    TempData["Title"] = ViewBag.Title;
+    TempData["BackPageName"] = ViewBag.PageName;
+    ViewData["BackPageUrl"] = "";
+
+    var requestCultureFeature = Context.Features.Get<IRequestCultureFeature>();
+    var requestCulture = requestCultureFeature.RequestCulture;
+}
+
+<div class="ibox" id="vueApp">
+    <div class="ibox-title">
+        <h5>@localizer.Get("Edit")</h5>
+        <div class="ibox-tools">
+            <a class="btn btn-defult " asp-action="Index">@localizer.Get("Back to List")</a>
+        </div>
+    </div>
+    <div class="ibox-content">
+        <div id="accordion">
+            <div class="card">
+                <div class="card-body">
+                    <form asp-action="SaveSetting">
+                        <div class="row">
+                            <input type="hidden" asp-for="Id" />
+                            <input type="hidden" asp-for="Key" />
+                            <div class="form-group col-md-6">
+                                <label asp-for="Value" class="control-label"></label>  <span style="color:red">*</span>
+                                <textarea asp-for="Value" class="form-control" rows="15"></textarea>
+                                <span asp-validation-for="Value" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label asp-for="ValueAr" class="control-label"></label>  <span style="color:red">*</span>
+                                <textarea asp-for="ValueAr" class="form-control" rows="15"></textarea>
+                                <span asp-validation-for="ValueAr" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    <input id="form-submit-btn" type="submit" value="@localizer.Get("Save Changes")" class="btn btn-primary" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="~/js/jquery-3.1.1.min.js"></script>
+
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <!-- include summernote css/js -->
+    @*<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>*@
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
+ 
+
+    <script>
+        $(document).ready(function () {
+            $('#Value').summernote({
+                tabsize: 2,
+                height: 350,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                ]
+            });
+            $('#ValueAr').summernote({
+                tabsize: 2,
+                height: 350,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                ]
+            });
+        });
+
+    </script>
+}

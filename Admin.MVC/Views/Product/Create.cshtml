@@ -1,0 +1,117 @@
+﻿@using Admin.MVC.Services;
+@inject CommonLocalizationService localizer;
+@using Microsoft.AspNetCore.Localization
+@{
+    var requestCultureFeature = Context.Features.Get<IRequestCultureFeature>();
+    var requestCulture = requestCultureFeature.RequestCulture;
+
+    ViewData["Title"] = localizer.Get("Create Product");
+    ViewData["BackPageName"] = localizer.Get("Products List");
+    ViewData["BackPageUrl"] = "Product";
+}
+
+<link href="~/Scripts/summernote/summernote.min.css" rel="stylesheet" />
+<div class="ibox" id="createProductVueApp">
+    <div class="ibox-title">
+        <h5>@localizer.Get("Create")</h5>
+        <div class="ibox-tools">
+            <a class="btn btn-defult " asp-area="Admin" asp-action="Index">@localizer.Get("Back to List")</a>
+        </div>
+    </div>
+    <div class="ibox-content">
+        <div id="accordion">
+            <div class="card">
+                <div class="card-header c-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link  btn-block " data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            @localizer.Get("Product Main Info") <i class="fas fa-angle-double-down"></i>
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <form id="mainInfoForm"
+                              action="javascript:void(0)">
+                            <div class="row">
+
+                                <div class="form-group col-md-6">
+                                    <label>@localizer.Get("Name") </label>  <span style="color:red">*</span>
+                                    <div>
+                                        <input v-model="product.name" required class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>@localizer.Get("Name Arabic")</label>  <span style="color:red">*</span>
+                                    <div>
+                                        <input v-model="product.nameAr" required class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>@localizer.Get("Description") </label>  <span style="color:red">*</span>
+
+                                    <textarea v-model="product.description" class="form-control"  rows="10" id="description" required></textarea>
+
+                                </div>
+
+
+
+                                <div class="form-group col-md-6">
+                                    <label>@localizer.Get("Description Arabic")</label>  <span style="color:red">*</span>
+                                    <div>
+                                        <textarea v-model="product.descriptionAr"  class="form-control" rows="10" id="descriptionAr" required></textarea>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+                                <div class="form-group col-md-4">
+                                    <label>@localizer.Get("Stock")</label>  <span style="color:red">*</span>
+                                    <div>
+                                        <input type="number" v-model.number="product.stock" required class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label>@localizer.Get("Price")</label>  <span style="color:red">*</span>
+                                    <div>
+                                        <input type="number" v-model.number="product.price" required class="form-control" />
+                                    </div>
+                                </div>
+                                
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-12" style="text-align:center">
+                <button class="btn btn-info" style="margin-top:30px" v-on:click="checkUserIsAuthenticated()">
+                    <i class="fa fa-plus"></i>
+                    @localizer.Get("Save Product")
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/js/jquery-3.1.1.min.js"></script>
+@section Scripts {
+    <a href="~/Scripts/summernote/summernote.js.map"></a>
+    <script src="~/Scripts/summernote/summernote.min.js"></script>
+    @{await Html.RenderPartialAsync("_VueJsFiles");}
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/Scripts/Pages/CreateProduct.js"></script>
+
+}
+<script>
+
+</script>

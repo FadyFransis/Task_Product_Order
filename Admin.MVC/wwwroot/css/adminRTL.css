@@ -1,0 +1,98 @@
+/*******************************************************************************************************  GENERAL  ***/
+/*********************************************************************************************************************/
+#wrapper {
+    direction: rtl;
+    text-align: right;
+    font-family: 'Cairo', sans-serif;
+}
+
+#page-wrapper {
+    margin: 0 220px 0 0;
+}
+
+.ibox-title {
+    padding: 15px 15px 8px 90px;
+}
+.lang-label {
+    font-weight: 600;
+    color: #a7b1c2;
+    padding-inline-start: 20px;
+}
+.ibox-tools {
+    right: unset;
+    left: 15px;
+}
+
+    .ibox-tools a {
+        margin-right: 5px;
+        margin-left: 0;
+    }
+
+select.form-control {
+    padding-top: 3px;
+}
+
+/*****************************************************************************************************  ASIDE NAV  ***/
+/*********************************************************************************************************************/
+.nav {
+    padding-left: unset;
+    padding-right: 0;
+}
+
+body.mini-navbar #page-wrapper {
+    margin: 0 70px 0 0;
+}
+
+.metismenu .arrow {
+    float: left;
+}
+
+.nav > li > a i {
+    margin-right: 0;
+    margin-left: 6px;
+}
+
+.nav-second-level li a {
+    padding: 7px 52px 7px 10px;
+}
+
+.nav > li.active {
+    border-right: 4px solid #7F0D0D;
+    border-left: 0;
+}
+
+.minimalize-styl-2 {
+    margin: 14px 20px 5px 5px;
+}
+
+.navbar-top-links li:last-child {
+    margin-right: 0;
+    margin-left: 30px;
+}
+
+/****************************************************************************************************  BREADCRUMB  ***/
+/*********************************************************************************************************************/
+.breadcrumb-item + .breadcrumb-item::before {
+    padding-right: 0;
+    padding-left: .5rem;
+}
+
+.breadcrumb-item + .breadcrumb-item {
+    padding-left: 0;
+    padding-right: .5rem;
+}
+
+/*********************************************************************************************************  TABLE  ***/
+/*********************************************************************************************************************/
+.footable > thead > tr > th > span.footable-sort-indicator {
+    padding-left: 0;
+    padding-right: 5px;
+}
+
+.pagination {
+    padding-left: unset;
+    padding-right: 0;
+}
+.nav-rtl{
+    float:inherit
+}

@@ -1,0 +1,125 @@
+﻿@model IEnumerable<Admin.MVC.ViewModels.ProductViewModel>
+@using Admin.MVC.Services;
+@inject CommonLocalizationService localizer;
+
+
+@{
+    ViewData["Title"] = localizer.Get("Products List");
+    ViewData["BackPageName"] = localizer.Get("Home");
+    ViewData["BackPageUrl"] = "";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox ">
+
+            <div class="ibox-title row">
+                <h5 style='display:inline;' class="col-sm-3  pl-4">@localizer.Get("Products List")</h5>
+                <input type="text" class="form-control form-control-sm m-b-xs col-md-6" id="filter"
+                       placeholder="@localizer.Get("Search")">
+                <div class="ibox-tools">
+                    <a asp-action="Create" class="btn btn-primary btn-sm mr-4 ">@localizer.Get("Create New")</a>
+                </div>
+            </div>
+
+            <div class="ibox-content">
+                <table class="footable table table-stripped" data-page-size="8" data-filter=#filter>
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Id)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Name)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.NameAr)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Description)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DescriptionAr)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Price)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Stock)
+                            </th>
+                            <th>@localizer.Get("Actions")</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NameAr)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DescriptionAr)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Price)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Stock)
+
+                            </td>
+                            
+                            <td>
+                                @using (Html.BeginForm("DeleteProduct", "Product"))
+                                {
+
+                                    <a href="@Url.Action("Edit", "Product", new { id = item.Id })" class="btn  btn-white btn-sm" title="Edit">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    @Html.AntiForgeryToken()
+                                    @Html.Hidden("id", item.Id)
+                                     <button type="submit" class="btn btn-white btn-sm" onclick="return confirm('Are you sure you to delete this Record?');">
+                                            <i class="fa fa-trash"></i>
+                                     </button>
+                                    
+                                    
+                                }
+                            </td>
+                        </tr>
+                        }
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="9">
+                                <ul class="pagination float-right"></ul>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/jquery-3.1.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.footable').footable();
+    });
+
+</script>

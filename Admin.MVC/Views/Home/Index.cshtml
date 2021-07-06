@@ -1,0 +1,17 @@
+﻿
+@using Admin.MVC.Services;
+@inject CommonLocalizationService localizer;
+@using Microsoft.AspNetCore.Localization
+
+@{
+
+    var requestCultureFeature = Context.Features.Get<IRequestCultureFeature>();
+    var requestCulture = requestCultureFeature.RequestCulture;
+    ViewData["Title"] = @localizer.Get("Home Page");
+
+}
+
+<div class="text-center">
+    <h1 class="display-4">@localizer.Get("Welcome")</h1>
+    
+</div>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>App.API</name>
+    </assembly>
+    <members>
+        <member name="M:App.API.Controllers.OrderController.GetUserOrders">
+            <summary>
+            Authorized API 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:App.API.Controllers.OrderController.AddOrder(App.API.DTOs.OrderDTO)">
+            <summary>
+            Authorized API 
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
