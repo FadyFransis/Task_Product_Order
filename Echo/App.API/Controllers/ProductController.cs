@@ -34,14 +34,41 @@ namespace App.API.Controllers
         }
 
 
-    
-   
 
-  
-   
+
+        /// <summary>
+        /// gfg
+        /// </summary>
+        /// <returns></returns>
+
         [HttpGet]
         [AllowAnonymous]
-        [Authorize(AuthenticationSchemes = "Bearer")]
+       
+        [Route("api/[controller]/[action]")]
+        public async Task<ResponseModel<List<ProductBaseDTO>>> GetAll()
+        {
+            // if product card has rates info undo comment for rating 
+            try
+            {
+
+                var result = await _service.GetAllProductsBaseModel();
+                var ProducstDTO = _mapper.Map<List<ProductBaseDTO>>(result);
+                //var listWithRates = _service.GetRateInfo(result.ToList());
+                //     var listWithRates = result.ToList();
+                //        List<ProductModel> productModels = new List<ProductModel>();
+                var responseModel = HelperClass<List<ProductBaseDTO>>.CreateResponseModel(_mapper.Map<List<ProductBaseDTO>>(ProducstDTO), false, "");
+                return responseModel;
+
+            }
+            catch (Exception ex)
+            {
+                _logger.Error("Error occured ProductController\\GetAllProductsByCategoryId" + " with EX: " + ex.ToString());
+                return HelperClass<List<ProductBaseDTO>>.CreateResponseModel(null, true, ex.Message);
+            }
+        }
+        [HttpGet]
+        [AllowAnonymous]
+       // [Authorize(AuthenticationSchemes = "Bearer")]
         [Route("api/[controller]/[action]")]
         public async Task<ResponseModel<ProductDetailsDTO>> GetById(long Id)
         {

@@ -91,12 +91,7 @@ namespace App.Core.Services
             
 
             }).ToList();
-            var productIds = productModels.Select(x => x.Id).ToList();
-            // get The count of Items Sold And if item is involved in orders 
-            var orderitems = await _orderItemsRepository.GetAllIncludeString(x=>x.Id >0 , null,
-               null, null, new string[] { "ProductSize", "ProductSize.Product" ,"Order" });
-
-            
+          
             return productModels.ToList();
         }
 

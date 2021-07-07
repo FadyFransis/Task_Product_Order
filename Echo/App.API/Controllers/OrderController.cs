@@ -62,7 +62,7 @@ namespace App.API.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("api/[controller]/[action]")]
-        [Authorize(AuthenticationSchemes = "Bearer")]
+      //  [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<ResponseModel<OrderDTO>> AddOrder([FromBody] OrderDTO model)
         {
             try
@@ -73,9 +73,9 @@ namespace App.API.Controllers
                       .SelectMany(v => v.Errors)
                       .Select(e => e.ErrorMessage)));
 
-                string userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+           //     string userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
                 var OrderModel = _mapper.Map<OrderModel>(model);
-                OrderModel.UserId = userId;
+                OrderModel.UserId = "824692e6-d320-4302-9730-df815c87e21d";
                 var result = await _service.AddOrder(OrderModel);
                 var OrderDTO = _mapper.Map<OrderDTO>(result);
                 var order = HelperClass<OrderDTO>.CreateResponseModel(OrderDTO, false, "");

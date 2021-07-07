@@ -26,6 +26,7 @@ namespace App.Core.Helper
                 TotalPaid = x.TotalPaid,
                 UserFullName = x.User.FirstName + " " + x.User.LastName,
                 UserEmail = x.User.Email,
+                OrderItems = x.OrderItems.GetOrderItemsModel(),
             }).OrderByDescending(x=>x.Id);
             return ordersModel;
 
@@ -43,6 +44,7 @@ namespace App.Core.Helper
                 OrderStatusNameAr = GetOrderStatusNameArabic(order.OrderStatus),
                 OrderDate = order.OrderDate,
                 UserId = order.UserId,
+                OrderItems = order.OrderItems.GetOrderItemsModel(),
             };
 
             return orderModel;

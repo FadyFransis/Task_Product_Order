@@ -37,6 +37,10 @@ namespace Admin.MVC.Controllers
             return View(list);
         }
 
+        public IActionResult Create()
+        {
+            return View();
+        }
 
         public async Task<IActionResult> Edit(long? id)
         {

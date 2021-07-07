@@ -38,13 +38,8 @@
                             <th>
                                 @localizer.Get("Date of order")
                             </th>
-                            <th>
-                                @localizer.Get("Time of order")
-                            </th>
-                            <th>
-                                @localizer.Get("Date of Deliver")
-                            </th>
-
+                           
+                            
                             <th>
                                 @localizer.Get("No. of products.")
                             </th>
@@ -56,9 +51,7 @@
                             <th>
                                 @localizer.Get("Order Status")
                             </th>
-                            <th>
-                                @localizer.Get("Area")
-                            </th>
+                            
                             <th>
                                 @localizer.Get("Total Paid")
 
@@ -78,13 +71,7 @@
                                 <td>
                                     @item.CreationDate.ToString("yyyy-MM-dd")
                                 </td>
-                                <td>
-                                    @item.CreationDate.ToString("HH-mm-ss")
-                                </td>
-
-                                <td>
-                                    @item.OrderDate.ToString("yyyy-MM-dd")
-                                </td>
+                              
 
                                 <td>
                                     @item.OrderItems.Sum(x => x.Quantity)
@@ -96,18 +83,7 @@
                                 <td>
                                     @item.OrderStatus.ToString()
                                 </td>
-                                @if (requestCulture.UICulture.Name == "ar")
-                                {
-                                    <td>
-                                        @item.ShippingAddress.AreaNameAr
-                                    </td>
-                                }
-                                else
-                                {
-                                    <td>
-                                        @item.ShippingAddress.AreaName
-                                    </td>
-                                }
+                              
                                 <td>
                                     @Html.DisplayFor(modelItem => item.TotalPaid)
                                 </td>

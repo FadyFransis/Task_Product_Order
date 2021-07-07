@@ -12,6 +12,7 @@ namespace App.Core.Entities
         public DateTime OrderDate { get; set; }
         public double TotalPaid { get; set; }
         public AppUser User { get; set; }
+        public ICollection<OrderItem> OrderItems { get; set; }
 
     }
 }

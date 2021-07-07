@@ -3,7 +3,7 @@
     public class OrderItemDTO : BaseDTO
     {
         public long OrderId { get; set; }
-        public long ProductSizeId { get; set; }
+        public long ProductId { get; set; }
         public int Quantity { get; set; }
         public int Price { get; set; }
 
@@ -11,7 +11,6 @@
     public class OrderItemLookupDTO : BaseDTO
     {
         public long OrderId { get; set; }
-        public long ProductSizeId { get; set; }
         public long ProductId { get; set; }
         public int Quantity { get; set; }
         public int Price { get; set; }

@@ -46,16 +46,14 @@ namespace App.Core.Services
         public async Task<IQueryable<OrderModel>> GetAllOrders()
         {
             var orders = await GetAllIncludeString<Order>("id", null, null, null, new string[]
-                { "OrderItems","OrderItems.ProductSize","OrderItems.ProductSize.Product","ShippingAddress","ShippingAddress.Area"});
+                { "OrderItems","OrderItems.Product"});
             return orders.Result.GetOrdersModel();
         }
 
         public async Task<OrderModel> GetOrderById(long orderId)
         {
             var order = await GetByIdIncludeString<Order>(orderId, new string[]
-                { "OrderItems","OrderItems.ProductSize","OrderItems.ProductSize.Product",
-                    "OrderItems.ProductSize.Product.ProductImages",
-                    "ShippingAddress","ShippingAddress.Area","User","DiscountCode"});
+                { "OrderItems","OrderItems.Product"});
             return order.GetOrderModel();
         }
 

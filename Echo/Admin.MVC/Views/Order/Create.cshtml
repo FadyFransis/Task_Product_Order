@@ -1,0 +1,235 @@
+﻿@model Admin.MVC.ViewModels.OrderViewModel
+@using Admin.MVC.Services;
+@inject CommonLocalizationService localizer;
+@using Microsoft.AspNetCore.Localization
+
+@{
+   
+
+    ViewData["Title"] = localizer.Get("New Order");
+    ViewData["BackPageName"] = localizer.Get("Manage Orders");
+    ViewData["BackPageUrl"] = "Order";
+
+    var requestCultureFeature = Context.Features.Get<IRequestCultureFeature>();
+    var requestCulture = requestCultureFeature.RequestCulture;
+}
+
+
+<div class="ibox" id="vueApp">
+    <div class="ibox-title">
+        <h5>@localizer.Get("Edit")</h5>
+        <div class="ibox-tools">
+            <a class="btn btn-defult " asp-action="Index">@localizer.Get("Back to List")</a>
+        </div>
+    </div>
+    <div class="ibox-content">
+        <div id="accordion">
+            <div class="card">
+                <div class="card-header c-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link  btn-block " data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            @localizer.Get("Order Main Info") <i class="fas fa-angle-double-down"></i>
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <form id="mainInfoForm"
+                              action="javascript:void(0)">
+                            <div class="row">
+
+                                @*<div class="form-group col-md-3">
+                                    <label>@localizer.Get("Order Number") </label>
+                                    <div>
+                                        <input v-model="order.orderNumber" disabled="disabled" class="form-control" />
+                                    </div>
+                                </div>*@
+                                @*<div class="form-group col-md-3">
+                                    <label>@localizer.Get("Order Status") </label>
+                                    @if (requestCulture.UICulture.Name == "ar")
+                                    {
+                                        <select class="form-control"  v-on:change="order.cancellationReason=''"
+                                                v-model="order.orderStatus">
+                                            <option v-for="c in orderStatus" v-bind:value="c.id">
+                                                {{ c.nameAr }}
+                                            </option>
+                                        </select>
+
+                                    }
+                                    else
+                                    {
+                                        <select class="form-control"  v-on:change="order.cancellationReason=''"
+                                                v-model="order.orderStatus">
+                                            <option v-for="c in orderStatus" v-bind:value="c.id">
+                                                {{ c.name }}
+                                            </option>
+                                        </select>
+                                    }
+                                </div>*@
+
+                                <div class="form-group col-md-3">
+                                    <label>@localizer.Get("Order Date") </label>
+                                    <div>
+                                        <input type="date" v-model="order.orderDate"   :min="MinDate" class="form-control" required>
+                                    </div>
+                                </div>
+
+                              
+                               
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            
+
+            <div class="card mt-1">
+                <div class="card-header c-header" id="headingFour">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link  btn-block " data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            @localizer.Get("Order Items") <i class="fas fa-angle-double-down"></i>
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <label>@localizer.Get("Product") </label>
+
+                                <select class="form-control"
+                                        v-model="productId">
+                                    <option v-for="c in products" v-bind:value="c.id">
+                                        {{ c.name }}
+                                    </option>
+                                </select>
+
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>@localizer.Get("Quantity") </label>
+                                <div>
+                                    <input type="number" min="1" v-model.number="quantity" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4" style="text-align:center">
+                                <button class="btn btn-info" style="margin-top:30px" v-on:click="addProduct()">
+                                    <i class="fa fa-file"></i>
+                                    @localizer.Get("Add Product")
+                                </button>
+                            </div>
+                            <div class="col-md-12 mt-2">
+                                <div class="ibox ">
+                                    <div class="ibox-title">
+                                        <h5>@localizer.Get("Order Items")</h5>
+                                        <h3>Total : <span v-show=" orderTotal>0"></span> {{orderTotal}}</h3>
+                                    </div>
+                                    <div class="ibox-content">
+                                        <input type="text" class="form-control form-control-sm m-b-xs" id="filterSizes"
+                                               placeholder="Search in table">
+                                        <table class="footable table table-stripped" data-page-size="5" data-filter=#filterSizes>
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        #
+                                                    </th>
+                                                    <th>
+                                                        @localizer.Get("Product Name")
+                                                    </th>
+
+                                                    <th>
+                                                        @localizer.Get("Quantity")
+                                                    </th>
+                                                    <th>
+                                                        @localizer.Get("Price")
+                                                    </th>
+                                                    <th>
+                                                        @localizer.Get("Total Price")
+
+                                                    </th>
+                                                    <th>
+                                                        @localizer.Get("Actions")
+
+                                                    </th>
+
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr v-for="(item,index) in order.orderItems" :key="item.id">
+                                                    <td>
+                                                        {{index+1}}
+                                                    </td>
+                                                    @if (requestCulture.UICulture.Name == "ar")
+                                                    {
+                                                    <td>
+                                                        {{item.nameAr }}
+                                                    </td>
+                                                    }
+                                                    else
+                                                    {
+                                                    <td>
+                                                        {{item.name }}
+                                                    </td>
+                                                    }
+
+                                                    <td>
+                                                        {{item.quantity}}
+                                                    </td>
+                                                    <td>
+                                                        {{item.price}}
+                                                    </td>
+
+                                                    <td>
+                                                        {{item.quantity * item.price }}
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-danger"  v-on:click="deleteProduct()">
+                                                            <i class="fa fa-trash"></i>
+                                                           
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <td colspan="7">
+                                                        <ul class="pagination float-right"></ul>
+                                                    </td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-12" style="text-align:center">
+                <button class="btn btn-info" style="margin-top:30px" v-on:click="isAuthenticated()">
+                    <i class="fa fa-file"></i>
+                    @localizer.Get("Save Order")
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="~/js/jquery-3.1.1.min.js"></script>
+@section Scripts {
+    <script>
+    var order=@Html.Raw(Json.Serialize(@Model));
+    </script>
+    @{await Html.RenderPartialAsync("_VueJsFiles");}
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/Scripts/Pages/CreateOrder.js"></script>
+
+}

@@ -49,7 +49,7 @@
                                     <label>@localizer.Get("Order Status") </label>
                                     @if (requestCulture.UICulture.Name == "ar")
                                     {
-                                        <select class="form-control" :disabled="order.oldStatus==3" v-on:change="order.cancellationReason=''"
+                                        <select class="form-control" 
                                                 v-model="order.orderStatus">
                                             <option v-for="c in orderStatus" v-bind:value="c.id">
                                                 {{ c.nameAr }}
@@ -59,7 +59,7 @@
                                     }
                                     else
                                     {
-                                        <select class="form-control" :disabled="order.oldStatus==3" v-on:change="order.cancellationReason=''"
+                                        <select class="form-control"
                                                 v-model="order.orderStatus">
                                             <option v-for="c in orderStatus" v-bind:value="c.id">
                                                 {{ c.name }}
@@ -76,37 +76,16 @@
                                 </div>
 
 
-                                <div class="form-group col-md-3">
-                                    <label>@localizer.Get("Delivery Fees") </label>
-                                    <div>
-                                        <input v-model.number="order.deliveryFees" type="number" min="0" step="1" class="form-control" />
-                                    </div>
-                                </div>
+                               
 
-                                <div class="form-group col-md-3">
-                                    <label>@localizer.Get("Discount Code") </label>
-                                    <div>
-                                        <input v-model="order.discountCodeStr" disabled="disabled" class="form-control" />
-                                    </div>
-                                </div>
-
-                                <div class="form-group col-md-3">
-                                    <label>@localizer.Get("Discount Amount") </label>
-                                    <div>
-                                        <input v-model.number="order.discountAmount" disabled="disabled" class="form-control" />
-                                    </div>
-                                </div>
+                                
                                 <div class="form-group col-md-3">
                                     <label>@localizer.Get("Total Paid") </label>
                                     <div>
                                         <input v-model.number="orderTotal" disabled="disabled" class="form-control" />
                                     </div>
                                 </div>
-                                <div class="form-group col-md-3" v-if="order.orderStatus==4">
-                                    <label>@localizer.Get("Cancellation Reason") </label>
-                                    <textarea v-model="order.cancellationReason" class="form-control"></textarea>
-
-                                </div>
+                                
 
                             </div>
                         </form>
@@ -115,76 +94,7 @@
             </div>
 
 
-            <div class="card mt-1">
-                <div class="card-header c-header" id="headingTwo">
-                    <h5 class="mb-0">
-                        <button class="btn btn-link collapsed btn-block " data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            @localizer.Get("Billing Address") <i class="fas fa-angle-double-down"></i>
-                        </button>
-                    </h5>
-                </div>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                    <div class="card-body">
-                        <div class="row">
-
-
-                            <div class="form-group col-md-4">
-                                <label>@localizer.Get("Full Name") </label>
-                                <div>
-                                    <input v-model="order?.shippingAddress.fullName" disabled="disabled" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label>@localizer.Get("Phone Number") </label>
-                                <div>
-                                    <input v-model="order.shippingAddress.phoneNumber" disabled="disabled" class="form-control" />
-                                </div>
-                            </div>
-                            @if (requestCulture.UICulture.Name == "ar")
-                            {
-                                <div class="form-group col-md-4">
-                                    <label>@localizer.Get("Area") </label>
-                                    <div>
-                                        <input v-model="order.shippingAddress.areaNameAr" disabled="disabled" class="form-control" />
-                                    </div>
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="form-group col-md-4">
-                                    <label>@localizer.Get("Area") </label>
-                                    <div>
-                                        <input v-model="order.shippingAddress.areaName" disabled="disabled" class="form-control" />
-                                    </div>
-                                </div>
-                            }
-                            <div class="form-group col-md-4">
-                                <label>@localizer.Get("Address Title") </label>
-                                <div>
-
-                                    <input v-model="order?.shippingAddress.title" disabled="disabled" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label>@localizer.Get("Address") </label>
-                                <div>
-                                    <input v-model="order.shippingAddress.address" disabled="disabled" class="form-control" />
-                                </div>
-                            </div>
-
-                            <div class="form-group col-md-4">
-                                <label>@localizer.Get("Postal Code") </label>
-                                <div>
-                                    <input v-model="order.shippingAddress.postalCode" disabled="disabled" class="form-control" />
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                    </div>
-                </div>
-            </div>
+            
 
             <div class="card mt-1">
                 <div class="card-header c-header" id="headingFour">
